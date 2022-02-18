@@ -34,6 +34,7 @@ public class CustomizedWebMvcConfigurer implements WebMvcConfigurer {
         List<MediaType> mediaTypes = new ArrayList<>();
         mediaTypes.add(MediaType.valueOf(MediaType.APPLICATION_JSON_VALUE + ";charset=UTF-8"));
         fastJsonHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
+        //fastjson转换器必须放在StringHttpMessageConverter之后，不然接口返回值如果是字符串，会多加一对双引号
         converters.add(fastJsonHttpMessageConverter);
     }
 
